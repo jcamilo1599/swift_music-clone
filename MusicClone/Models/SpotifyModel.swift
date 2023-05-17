@@ -7,6 +7,15 @@
 
 import Foundation
 
+// MARK: - SpotifyResp
+struct SpotifyResp: Codable {
+    let tracks: SpotifyTracks
+
+    enum CodingKeys: String, CodingKey {
+        case tracks = "tracks"
+    }
+}
+
 // MARK: - SpotifyTracks
 struct SpotifyTracks: Codable {
     let href: String
@@ -45,7 +54,7 @@ struct SpotifyItem: Codable {
     let popularity: Int
     let previewURL: String
     let trackNumber: Int
-    let type: String
+    let type: SpotifyItemType
     let uri: String
 
     enum CodingKeys: String, CodingKey {
@@ -71,8 +80,7 @@ struct SpotifyItem: Codable {
 
 // MARK: - SpotifyAlbum
 struct SpotifyAlbum: Codable {
-    let albumGroup: String
-    let albumType: String
+    let albumType: SpotifyAlbumTypeEnum
     let artists: [SpotifyArtist]
     let availableMarkets: [String]
     let externalUrls: SpotifyExternalUrls
@@ -81,13 +89,12 @@ struct SpotifyAlbum: Codable {
     let images: [SpotifyImage]
     let name: String
     let releaseDate: String
-    let releaseDatePrecision: String
+    let releaseDatePrecision: SpotifyReleaseDatePrecision
     let totalTracks: Int
-    let type: String
+    let type: SpotifyAlbumTypeEnum
     let uri: String
 
     enum CodingKeys: String, CodingKey {
-        case albumGroup = "album_group"
         case albumType = "album_type"
         case artists = "artists"
         case availableMarkets = "available_markets"
@@ -104,13 +111,19 @@ struct SpotifyAlbum: Codable {
     }
 }
 
+enum SpotifyAlbumTypeEnum: String, Codable {
+    case album = "album"
+    case compilation = "compilation"
+    case single = "single"
+}
+
 // MARK: - SpotifyArtist
 struct SpotifyArtist: Codable {
     let externalUrls: SpotifyExternalUrls
     let href: String
     let id: String
     let name: String
-    let type: String
+    let type: SpotifyArtistType
     let uri: String
 
     enum CodingKeys: String, CodingKey {
@@ -132,6 +145,10 @@ struct SpotifyExternalUrls: Codable {
     }
 }
 
+enum SpotifyArtistType: String, Codable {
+    case artist = "artist"
+}
+
 // MARK: - SpotifyImage
 struct SpotifyImage: Codable {
     let height: Int
@@ -145,6 +162,10 @@ struct SpotifyImage: Codable {
     }
 }
 
+enum SpotifyReleaseDatePrecision: String, Codable {
+    case day = "day"
+}
+
 // MARK: - SpotifyExternalIDS
 struct SpotifyExternalIDS: Codable {
     let isrc: String
@@ -154,36 +175,33 @@ struct SpotifyExternalIDS: Codable {
     }
 }
 
-// Esta clase representa el valor nulo en JSON.
+enum SpotifyItemType: String, Codable {
+    case track = "track"
+}
+
+// MARK: - Encode/decode helpers
+
 class JSONNull: Codable, Hashable {
-    // Implementación del operador de igualdad
+
     public static func == (lhs: JSONNull, rhs: JSONNull) -> Bool {
-        // Siempre se considera que dos instancias de JSONNull son iguales.
         return true
     }
 
-    // Implementación del método hash(into:).
-    public func hash(into hasher: inout Hasher) {
-        // Siempre se le asigna el valor 0 al hash de una instancia de JSONNull.
-        hasher.combine(0)
+    public var hashValue: Int {
+        return 0
     }
 
-    // Constructor por defecto.
     public init() {}
 
-    // Implementación del constructor desde un decoder.
     public required init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if !container.decodeNil() {
-            // Si el valor no es nulo, se lanza un error de tipo.
-            throw DecodingError.typeMismatch(JSONNull.self, DecodingError.Context(codingPath: decoder.codingPath, debugDescription: "Valor incorrecto para JSONNull"))
+            throw DecodingError.typeMismatch(JSONNull.self, DecodingError.Context(codingPath: decoder.codingPath, debugDescription: "Wrong type for JSONNull"))
         }
     }
 
-    // Implementación del método encode(to:).
     public func encode(to encoder: Encoder) throws {
         var container = encoder.singleValueContainer()
-        // Se codifica el valor nulo.
         try container.encodeNil()
     }
 }

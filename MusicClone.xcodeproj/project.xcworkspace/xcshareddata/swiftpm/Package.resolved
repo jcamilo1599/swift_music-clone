@@ -1,12 +1,12 @@
 {
   "pins" : [
     {
-      "identity" : "ios-sdk",
+      "identity" : "alamofire",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/spotify/ios-sdk",
+      "location" : "https://github.com/Alamofire/Alamofire",
       "state" : {
-        "revision" : "c12c8630949492439e54b6482219c34bc7d65157",
-        "version" : "1.2.3"
+        "revision" : "bc268c28fb170f494de9e9927c371b8342979ece",
+        "version" : "5.7.1"
       }
     }
   ],

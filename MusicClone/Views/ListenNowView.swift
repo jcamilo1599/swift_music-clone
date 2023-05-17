@@ -34,31 +34,8 @@ struct ListenNowView: View {
             }
         }
         .onAppear {
-            getTracks()
+            spotifyAPI.fetchTopTracks()
         }
-    }
-    
-    /// Obtiene las canciones populares
-    private func getTracks() {
-        spotifyAPI.requestClientCredentialsToken(completion: { result in
-            switch result {
-            case .success(_): break
-            case .failure(let error):
-                loading.toggle()
-                print("Error obteniendo el token de acceso: \(error.localizedDescription)")
-            }
-        }, afterSuccess: {
-            spotifyAPI.searchPopularTracks { result in
-                loading.toggle()
-                
-                switch result {
-                case .success(let response):
-                    tracks = response
-                case .failure(let error):
-                    print("Error buscando las canciones populares: \(error.localizedDescription)")
-                }
-            }
-        })
     }
 }
 
