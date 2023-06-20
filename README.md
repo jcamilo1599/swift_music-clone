@@ -1,3 +1,3 @@
-# Clone app Apple Music
+# Apple Music app clone
 
 ![Image](image.GIF)
