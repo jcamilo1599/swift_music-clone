@@ -15,6 +15,8 @@
 		0DAD778A29FE59A500FC2D84 /* SheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DAD778929FE59A500FC2D84 /* SheetView.swift */; };
 		0DAD778C29FE5A0500FC2D84 /* CurrentPlaybackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DAD778B29FE5A0500FC2D84 /* CurrentPlaybackView.swift */; };
 		0DAD778E29FE5B4000FC2D84 /* DragGestureExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DAD778D29FE5B4000FC2D84 /* DragGestureExtension.swift */; };
+		0DBCD2C62A41225800CAA058 /* LosslessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DBCD2C52A41225800CAA058 /* LosslessView.swift */; };
+		0DBCD2CC2A41267E00CAA058 /* IndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DBCD2CB2A41267E00CAA058 /* IndicatorView.swift */; };
 		0DCEE2F22A0191E5007C3CC2 /* EffectsIdsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DCEE2F12A0191E5007C3CC2 /* EffectsIdsModel.swift */; };
 		0DD35E6129FEF9CB00F701CC /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD35E6029FEF9CB00F701CC /* UIImageExtension.swift */; };
 		0DD35E6829FF1ACF00F701CC /* SpotifyAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD35E6729FF1ACF00F701CC /* SpotifyAPI.swift */; };
@@ -38,6 +40,8 @@
 		0DAD778929FE59A500FC2D84 /* SheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetView.swift; sourceTree = "<group>"; };
 		0DAD778B29FE5A0500FC2D84 /* CurrentPlaybackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentPlaybackView.swift; sourceTree = "<group>"; };
 		0DAD778D29FE5B4000FC2D84 /* DragGestureExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DragGestureExtension.swift; sourceTree = "<group>"; };
+		0DBCD2C52A41225800CAA058 /* LosslessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LosslessView.swift; sourceTree = "<group>"; };
+		0DBCD2CB2A41267E00CAA058 /* IndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndicatorView.swift; sourceTree = "<group>"; };
 		0DCEE2F12A0191E5007C3CC2 /* EffectsIdsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EffectsIdsModel.swift; sourceTree = "<group>"; };
 		0DD35E6029FEF9CB00F701CC /* UIImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
 		0DD35E6729FF1ACF00F701CC /* SpotifyAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotifyAPI.swift; sourceTree = "<group>"; };
@@ -114,16 +118,50 @@
 		0DAD778829FE599C00FC2D84 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				0DAD778929FE59A500FC2D84 /* SheetView.swift */,
+				0DBCD2CA2A4122A700CAA058 /* Atoms */,
+				0DBCD2C92A41229F00CAA058 /* Molecules */,
+				0DBCD2C72A41227400CAA058 /* Organisms */,
+				0DBCD2C82A41228C00CAA058 /* Pages */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		0DBCD2C72A41227400CAA058 /* Organisms */ = {
+			isa = PBXGroup;
+			children = (
 				0DAD778B29FE5A0500FC2D84 /* CurrentPlaybackView.swift */,
+				0DAD778929FE59A500FC2D84 /* SheetView.swift */,
+			);
+			path = Organisms;
+			sourceTree = "<group>";
+		};
+		0DBCD2C82A41228C00CAA058 /* Pages */ = {
+			isa = PBXGroup;
+			children = (
 				0DD35E6C2A00E27600F701CC /* ListenNowView.swift */,
 				0DD35E6E2A00E38100F701CC /* ExploreView.swift */,
 				0DD35E772A00E71100F701CC /* RadioView.swift */,
 				0DD35E792A00E73300F701CC /* LibraryView.swift */,
 				0DD35E7B2A00E78900F701CC /* SearchView.swift */,
-				0D41A8F02A079CC0002444EB /* AutoScrollingTextView.swift */,
 			);
-			path = Views;
+			path = Pages;
+			sourceTree = "<group>";
+		};
+		0DBCD2C92A41229F00CAA058 /* Molecules */ = {
+			isa = PBXGroup;
+			children = (
+				0D41A8F02A079CC0002444EB /* AutoScrollingTextView.swift */,
+				0DBCD2CB2A41267E00CAA058 /* IndicatorView.swift */,
+			);
+			path = Molecules;
+			sourceTree = "<group>";
+		};
+		0DBCD2CA2A4122A700CAA058 /* Atoms */ = {
+			isa = PBXGroup;
+			children = (
+				0DBCD2C52A41225800CAA058 /* LosslessView.swift */,
+			);
+			path = Atoms;
 			sourceTree = "<group>";
 		};
 		0DD35E6529FF1AC200F701CC /* APIs */ = {
@@ -223,9 +261,11 @@
 				0DD35E6D2A00E27600F701CC /* ListenNowView.swift in Sources */,
 				0DAD777A29FE58DB00FC2D84 /* ContentView.swift in Sources */,
 				0DD35E6129FEF9CB00F701CC /* UIImageExtension.swift in Sources */,
+				0DBCD2CC2A41267E00CAA058 /* IndicatorView.swift in Sources */,
 				0DAD778C29FE5A0500FC2D84 /* CurrentPlaybackView.swift in Sources */,
 				0DD35E6829FF1ACF00F701CC /* SpotifyAPI.swift in Sources */,
 				0DCEE2F22A0191E5007C3CC2 /* EffectsIdsModel.swift in Sources */,
+				0DBCD2C62A41225800CAA058 /* LosslessView.swift in Sources */,
 				0DD35E732A00E4E600F701CC /* ViewExtension.swift in Sources */,
 				0DD35E782A00E71100F701CC /* RadioView.swift in Sources */,
 				0DAD777829FE58DB00FC2D84 /* MusicCloneApp.swift in Sources */,

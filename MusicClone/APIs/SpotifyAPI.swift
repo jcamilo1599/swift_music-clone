@@ -9,8 +9,8 @@ import Foundation
 import Alamofire
 
 class SpotifyAPI {
-    let clientId = ""
-    let clientSecret = ""
+    let clientId = "e3566ac81b8141c8af1c7e6572dbcce7"
+    let clientSecret = "b580e33181f641a8ae4e73c5c10be087"
     
     private func getToken(completion: @escaping (String?) -> Void) {
         let url = "https://accounts.spotify.com/api/token"

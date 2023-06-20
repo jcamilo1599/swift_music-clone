@@ -60,6 +60,7 @@ struct SheetView: View {
                                 .opacity(animateContent ? cornerProgress : 0)
                                 .offset(y: animateContent ? 0 : size.height)
                                 .clipped()
+                                .padding(.top, 6)
                         }
                         
                         GeometryReader { albumImageGeometry in
@@ -152,7 +153,7 @@ struct SheetView: View {
                             Image(systemName: "ellipsis")
                                 .foregroundColor(.white)
                                 .fontWeight(.heavy)
-                                .padding(12)
+                                .padding(10)
                                 .background {
                                     Circle()
                                         .fill(.white.opacity(0.2))
@@ -161,22 +162,25 @@ struct SheetView: View {
                     }
                     
                     // Indicador del tiempo
-                    Capsule()
-                        .fill(.ultraThinMaterial)
-                        .environment(\.colorScheme, .light)
-                        .frame(height: 8)
-                        .padding(.top, spacing)
+                    IndicatorView(
+                        progress: .constant(0.33),
+                        height: .constant(8)
+                    )
                     
                     HStack {
-                        Text("0:00")
+                        Text("1:19")
                             .font(.caption)
-                            .foregroundColor(.gray)
+                            .foregroundColor(.white.opacity(0.4))
                         
-                        Spacer(minLength: 0)
+                        Spacer()
                         
-                        Text("-3:57")
+                        LosslessView()
+                        
+                        Spacer()
+                        
+                        Text("-2:37")
                             .font(.caption)
-                            .foregroundColor(.gray)
+                            .foregroundColor(.white.opacity(0.4))
                     }
                 }
                 .frame(height: size.height / 2.5, alignment: .top)
@@ -211,10 +215,10 @@ struct SheetView: View {
                         Image(systemName: "speaker.fill")
                             .foregroundColor(.gray)
                         
-                        Capsule()
-                            .fill(.ultraThinMaterial)
-                            .environment(\.colorScheme, .light)
-                            .frame(height: 6)
+                        IndicatorView(
+                            progress: .constant(0.5),
+                            height: .constant(6)
+                        )
                         
                         Image(systemName: "speaker.wave.3.fill")
                             .foregroundColor(.gray)
@@ -235,7 +239,7 @@ struct SheetView: View {
                             }
                             
                             Text("AirPods Pro 2 de Juan Camilo")
-                                .font(.caption)
+                                .font(.system(size: 12, weight: .medium))
                         }
                         
                         Button {
